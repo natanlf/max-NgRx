@@ -1,3 +1,5 @@
+import { Action } from '@ngrx/store';
+
 import { Ingredient } from "../shared/ingredient.model";
 
 const initialState = {
@@ -6,7 +8,14 @@ const initialState = {
     new Ingredient('Tomatoes', 10)
   ]
 }
-
-export function shoppingListReducer(state = initialState, action) {
-
+/* Estado precisa ser imutável, assim não posso editar o estado existente ou anterior
+... para copiar o estado anterior */
+export function shoppingListReducer(state = initialState, action: Action) {
+  switch(action.type) {
+    case 'ADD_INGREDIENT':
+      return {
+        ...state,
+        ingredients: [...state.ingredients, action]
+      }
+  }
 }
