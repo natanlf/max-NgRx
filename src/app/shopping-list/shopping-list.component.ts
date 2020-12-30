@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Subscription, Observable } from 'rxjs';
 
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from './shopping-list.service';
@@ -10,19 +11,24 @@ import { ShoppingListService } from './shopping-list.service';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  ingredients: Ingredient[];
-  private subscription: Subscription;
+  /* Não é mais um array, pois o método select no NgRx retorna um observable */
+  ingredients: Observable<{ ingredients: Ingredient[] }>;
+  //private subscription: Subscription;
 
-  constructor(private slService: ShoppingListService) { }
+  //shoppingList é o nome do store que definimos no appmodule
+  constructor(
+    private slService: ShoppingListService,
+    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>) { }
 
   ngOnInit() {
-    this.ingredients = this.slService.getIngredients();
+    this.ingredients = this.store.select('shoppingList'); //isso retorna um observable
+    /*this.ingredients = this.slService.getIngredients();
     this.subscription = this.slService.ingredientsChanged
       .subscribe(
         (ingredients: Ingredient[]) => {
           this.ingredients = ingredients;
         }
-      );
+      );*/
   }
 
   onEditItem(index: number) {
@@ -30,6 +36,6 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    //this.subscription.unsubscribe();
   }
 }
