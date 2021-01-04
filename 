@@ -1,0 +1,35 @@
+[33mcommit 8b316779988f4ff2815b4b8be7538124a938f808[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Natan Lara Ferreira <natanlaraferreira@gmail.com>
+Date:   Wed Dec 30 14:01:58 2020 -0300
+
+    Selecting State
+
+[33mcommit 3955813a1f968877d18d07d42a8be0a6bab1cd6d[m
+Author: Natan Lara Ferreira <natanlaraferreira@gmail.com>
+Date:   Wed Dec 30 13:43:23 2020 -0300
+
+    Setting Up the NgRx Store
+
+[33mcommit 1294e19d02cc90b171846d0fd11274b0aaa78111[m
+Author: Natan Lara Ferreira <natanlaraferreira@gmail.com>
+Date:   Wed Dec 30 11:45:51 2020 -0300
+
+    Understanding & Adding Actions
+
+[33mcommit aed699171f413a7b424cdf5126aaaac38c784ea6[m
+Author: Natan Lara Ferreira <natanlaraferreira@gmail.com>
+Date:   Wed Dec 30 11:29:07 2020 -0300
+
+    Adding Logic to the Reducer
+
+[33mcommit e37adc69712956afdb795df9fe80214a96601c89[m
+Author: Natan Lara Ferreira <natanlaraferreira@gmail.com>
+Date:   Wed Dec 30 11:14:20 2020 -0300
+
+    Getting Started with Reducers
+
+[33mcommit 0112506d467cde504f1226541b499baf90a2ec69[m
+Author: Natan Lara Ferreira <natanlaraferreira@gmail.com>
+Date:   Wed Dec 30 10:52:57 2020 -0300
+
+    first commit
