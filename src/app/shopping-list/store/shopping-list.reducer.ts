@@ -38,24 +38,28 @@ export function shoppingListReducer(
         ingredients: [...state.ingredients, ...action.payload]
       } //copia os valores antigos e adiciona os novos
     case ShoppingListActions.UPDATE_INGREDIENT:
-      const ingredient = state.ingredients[action.payload.index];
+      const ingredient = state.ingredients[state.editedIngredientIndex];
       const updatedIngredient = {
         ...ingredient,
-        ...action.payload.ingredient
+        ...action.payload
       }; //copia o ingrediente e o atualiza com o novo valor
       const updatedIngredients = [...state.ingredients]; //copia o array de ingredientes
-      updatedIngredients[action.payload.index] = updatedIngredient; //o array de ingredientes é atualizado
+      updatedIngredients[state.editedIngredientIndex] = updatedIngredient; //o array de ingredientes é atualizado
 
       return {
         ...state,
-        ingredients: updatedIngredients
+        ingredients: updatedIngredients,
+        editedIngredientIndex: -1,
+        editedIngredient: null
       };
     case ShoppingListActions.DELETE_INGREDIENT:
       return {
         ...state,
         ingredients: state.ingredients.filter((ig, igIndex) => {
-          return igIndex !== action.payload;
-        })
+          return igIndex !== state.editedIngredientIndex;
+        }),
+        editedIngredientIndex: -1,
+        editedIngredient: null
       }
     case ShoppingListActions.START_EDIT:
       return {
