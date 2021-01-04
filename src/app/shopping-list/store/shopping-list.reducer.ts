@@ -57,6 +57,18 @@ export function shoppingListReducer(
           return igIndex !== action.payload;
         })
       }
+    case ShoppingListActions.START_EDIT:
+      return {
+        ...state,
+        editedIngredientIndex: action.playload,
+        editedIngredient: { ...state.ingredients[action.playload] } //copia o ingrediente que estou obtendo
+      };
+    case ShoppingListActions.STOP_EDIT:
+      return {
+        ...state,
+        editedIngredient: null,
+        editedIngredientIndex: -1
+      };
     default: //usado por exemplo no carregamento inicial
       return state;
   }
